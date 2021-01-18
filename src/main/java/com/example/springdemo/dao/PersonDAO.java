@@ -28,4 +28,9 @@ public class PersonDAO {
 		return  this.people.get(id);
 	}
 
+	public void save(Person person) {
+		person.setId(++id);
+		people.add(person);
+	}
+
 }
