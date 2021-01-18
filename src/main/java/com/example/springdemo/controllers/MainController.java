@@ -15,7 +15,7 @@ public class MainController {
 	public String start(@RequestParam(name="Server") String server, Model model) {
 		model.addAttribute("title", "Home page.");
 		model.addAttribute("server", server);
-		return "start";
+		return "resources/templates/start";
 	}
 
 	@GetMapping("/hello")
@@ -59,4 +59,5 @@ public class MainController {
 		model.addAttribute("result", result);
 		return "calculator";
 	}
+
 }
