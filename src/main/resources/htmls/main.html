@@ -1,0 +1,36 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+<div>
+    <form method="POST" enctype="multipart/form-data" action="/">
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+
+    <form th:method="POST" th:action="@{/image}" th:object="${jsonModel}">
+        <label for="width">Enter width: </label>
+        <input type="text" th:field="*{width}" id="width"/>
+        <br/>
+        <label for="height">Enter height: \t</label>
+        <input type="text" th:field="*{height}" id="height"/>
+        <br/>
+    </form>
+</div>
+
+
+<div>
+    <ul>
+        <li th:each="file : ${files}">
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,26 +1,31 @@
 package com.example.springdemo.controllers;
 
 import com.example.springdemo.models.Camera;
-import com.example.springdemo.models.GlowLight;
 import com.example.springdemo.models.JsonModel;
-import com.example.springdemo.models.Sphere;
 import org.imgscalr.Scalr;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RestController;
-import org.w3c.dom.css.RGBColor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 
-@RestController
+@RequestMapping("/")
+@Controller
 public class MainController {
 
-	@GetMapping("/image")
-	public String getModel(@ModelAttribute(value = "jsonModel") JsonModel jsonModel,
+	@GetMapping("/")
+	public String start(HttpServletResponse response) {
+		return "main";
+	}
+
+
+
+	@ResponseBody
+	@PostMapping("/image")
+	public void getModel(@ModelAttribute(value = "jsonModel") JsonModel jsonModel,
 	                       HttpServletResponse response) throws IOException {
 
 
@@ -29,42 +34,40 @@ public class MainController {
 		BufferedImage newImage;
 		Integer z = 0;
 
-		System.out.println("Свет, камера, сцена!");
+		System.out.println("Свет, камера, сцена!\n" + jsonModel.toString());
 		jsonModel.cameraEngine();
 		resp = jsonModel.getCamera().toString() + jsonModel.getLight().toString() + jsonModel.getPlane().toString();
+
 		System.out.println("Изображение: " + jsonModel.getMultipartFile().getOriginalFilename());
 		bufferedImage = ImageIO.read(jsonModel.getMultipartFile().getInputStream());
-//		if (jsonModel.getHeight() == null) {
-//			jsonModel.setHeight(bufferedImage.getHeight());
-//		}
-//		if (jsonModel.getWeigh() == null) {
-//			jsonModel.setWeigh(bufferedImage.getWidth());
-//		}
+
 		System.out.println("Меняем рзмер Ширина х Высота: " + jsonModel.getWeigh() + " x " + jsonModel.getHeight());
 		newImage = Scalr.resize(bufferedImage,
 				Scalr.Mode.FIT_EXACT,
-				jsonModel.getHeight(),
-				jsonModel.getWeigh());
+				jsonModel.getWeigh(),
+				jsonModel.getHeight());
 		System.out.println("Пишем пиксели.");
 		for (int i = 0; i < jsonModel.getHeight(); i++) {
 			for (int j = 0; j < jsonModel.getWeigh(); j++) {
 				Random random = new Random();
-				Integer rgb = newImage.getRGB(i, j);
+				Integer rgb = newImage.getRGB(j, i);
 				if (false) {
 					jsonModel.getGlowLight().setColor(rgb);
 					jsonModel.getGlowLight().setOrigin(i * 5, -(j * 5), 500);
 					resp = resp + jsonModel.getGlowLight().toString();
 				} else {
 					jsonModel.getSphere().setColor(rgb);
-					jsonModel.getSphere().setOrigin(i * 10, -(j * 10), getZ(rgb, Math.max(jsonModel.getHeight(), jsonModel.getWeigh())));
+					jsonModel.getSphere().setRadius(Math.max(getZ(rgb, 0) / 50f, 1));
+					jsonModel.getSphere().setOrigin(j * 10, -(i * 10), getZ(rgb, Math.max(jsonModel.getHeight(), jsonModel.getWeigh())));
 					resp = resp + jsonModel.getSphere().toString();
 				}
+
 			}
 		}
 		System.out.println("Ставим подпись. Готово!");
 		response.addHeader("Hello", "hello pidor");
-		response.setContentType("scene");
-		return resp;
+		response.setContentType("text/scene");
+		response.getOutputStream().print(resp);
 	}
 
 	private Boolean isLight(int rgb) {
@@ -72,6 +75,11 @@ public class MainController {
 			return true;
 		}
 		return false;
+	}
+
+	@ModelAttribute(value = "jsonmodel")
+	public JsonModel getJsonModel() {
+		return new JsonModel();
 	}
 
 	private Integer getZ(int rgb, int max) {
@@ -92,4 +100,6 @@ public class MainController {
 		return false;
 
 	}
+
+
 }
