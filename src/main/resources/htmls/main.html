@@ -1,36 +1,21 @@
-<html xmlns:th="https://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New person</title>
+</head>
+
 <body>
-
-<div th:if="${message}">
-    <h2 th:text="${message}"/>
-</div>
-
-<div>
-    <form method="POST" enctype="multipart/form-data" action="/">
-        <table>
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-        </table>
-    </form>
-
-    <form th:method="POST" th:action="@{/image}" th:object="${jsonModel}">
-        <label for="width">Enter width: </label>
-        <input type="text" th:field="*{width}" id="width"/>
-        <br/>
-        <label for="height">Enter height: \t</label>
-        <input type="text" th:field="*{height}" id="height"/>
-        <br/>
-    </form>
-</div>
-
-
-<div>
-    <ul>
-        <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}" />
-        </li>
-    </ul>
-</div>
+<form th:method="POST" th:action=@{/image} th:object="${jsonmodel}">
+    <label for="height">Enter height: </label>
+    <input type="text" th:field="*{height}" id="height"/>
+    <br/>
+    <label for="weigh">Enter weigh: </label>
+    <input type="text" th:field="*{weigh}" id="weigh"/>
+    <br/>
+    File to upload: <input type="file" th:field="*{multipartFile}" id="multipartFile"><br />
+    <input type="submit" value="Upload"> Press here to upload the file!
+</form>
 
 </body>
 </html>

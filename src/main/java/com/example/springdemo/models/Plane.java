@@ -13,7 +13,7 @@ public class Plane {
 	public Plane() {
 		this.setOrigin(0,0,-15);
 		this.setNormal(0,0,1);
-		this.setColor(0x50fff0);
+		this.setColor(0);
 		this.shininess = 100f;
 		this.reflective = 0f;
 	}

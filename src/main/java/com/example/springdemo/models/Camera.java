@@ -25,19 +25,19 @@ public class Camera {
 	public Camera() {
 		this.origin = new ArrayList<>();
 		this.direction = new ArrayList<>();
-		this.fov = 90;
+		this.fov = 60;
 	}
 
 
 	public void setOrigin(int weigh, int height) {
 		this.origin.add((weigh * 10) / 3);
 		this.origin.add(-((height * 10) / 4));
-		this.origin.add((height > weigh) ? height * 10 : weigh * 13);
+		this.origin.add((height > weigh) ? height * 10 : weigh * 10);
 	}
 
 	public void setDirection(int weigh, int height) {
 		this.direction.add((weigh * 10) / 2);
-		this.direction.add(-((height * 10) / 3 * 2));
+		this.direction.add(-((height * 10) / 2));
 		this.direction.add(-((height * 10) / 3));
 	}
 
