@@ -1,10 +1,10 @@
 package com.example.springdemo.security;
 
 public enum AppUserPermission {
-	LOX_READ("lox:read"),
-	LOX_WRITE("lox:write"),
-	ADM_READ("adm:read"),
-	ADM_WRITE("adm:write");
+	STUDENT_READ("student:read"),
+	STUDENT_WRITE("student:write"),
+	COURSE_READ("course:read"),
+	COURSE_WRITE("course:write");
 
 	private final String permission;
 
