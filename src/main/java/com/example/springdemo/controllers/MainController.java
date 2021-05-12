@@ -12,15 +12,21 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Random;
 
-@RequestMapping("image")
-@RestController
+@RequestMapping("/")
+@Controller
 public class MainController {
 
-	@GetMapping
+	@GetMapping("login")
 	public String getInfo() {
-		return "this is first version with spring boot sec =) good luck";
+		return "login";
 	}
 
+	@GetMapping("courses")
+	public String getCourses() {
+		return "courses";
+	}
+
+	@ResponseBody
 	@PostMapping
 	public void getModel(@ModelAttribute(value = "jsonModel") JsonModel jsonModel,
 	                       HttpServletResponse response) throws IOException {
