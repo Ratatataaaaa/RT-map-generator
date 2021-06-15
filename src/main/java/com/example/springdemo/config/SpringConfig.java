@@ -1,6 +1,7 @@
 package com.example.springdemo.config;
 
 import com.example.springdemo.models.Camera;
+import com.example.springdemo.models.JsonModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.ApplicationContext;

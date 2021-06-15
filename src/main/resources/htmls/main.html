@@ -1,21 +1,41 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>New person</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>MyWorld login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #3e3e3e;
+            color: white;
+        }
+
+    </style>
 </head>
-
 <body>
-<form th:method="POST" th:action=@{/image} th:object="${jsonmodel}">
-    <label for="height">Enter height: </label>
-    <input type="text" th:field="*{height}" id="height"/>
-    <br/>
-    <label for="weigh">Enter weigh: </label>
-    <input type="text" th:field="*{weigh}" id="weigh"/>
-    <br/>
-    File to upload: <input type="file" th:field="*{multipartFile}" id="multipartFile"><br />
-    <input type="submit" value="Upload"> Press here to upload the file!
-</form>
-
+<div class="container">
+    <form class="form-rt" method="post" action="/rt">
+        <p>
+            <label for="height" class="sr-only">height</label>
+            <input type="text" id="height" name="height" class="form-control" placeholder="Height" required=""
+                   autofocus="">
+        </p>
+        <p>
+            <label for="weigh" class="sr-only">height</label>
+            <input type="text" id="weigh" name="weigh" class="form-control" placeholder="Weigh" required=""
+                   autofocus="">
+        </p>
+        <p>
+            <label for="url" class="sr-only">height</label>
+            <input type="text" id="url" name="url" class="form-control" placeholder="URL" required=""
+                   autofocus="">
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Go!</button>
+    </form>
+</div>
 </body>
 </html>

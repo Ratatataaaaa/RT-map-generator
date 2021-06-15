@@ -11,8 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import static com.example.springdemo.security.AppUserRole.*;
@@ -36,13 +34,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().disable()
 				.authorizeRequests()
 				.antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-				.antMatchers("/api/**").hasRole(STUDENT.name())
+				.antMatchers("/rt").hasRole(ADMIN.name())
 				.anyRequest()
 				.authenticated()
 				.and()
 				.formLogin()
 				.loginPage("/login").permitAll()
-				.defaultSuccessUrl("/courses", true)
+				.defaultSuccessUrl("/main", true)
 				.and()
 				.rememberMe();
 	}
@@ -67,8 +65,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		UserDetails tomUser = User.builder()
 				.username("tom")
 				.password(passwordEncoder.encode("password123"))
-                .roles(ADMINTRAINEE.name()) // ROLE_ADMINTRAINEE
-				.authorities(ADMINTRAINEE.getGrantedAuthorities())
+                .roles(ROLE.name()) // ROLE_ADMINTRAINEE
+				.authorities(ROLE.getGrantedAuthorities())
 				.build();
 
 		return new InMemoryUserDetailsManager(

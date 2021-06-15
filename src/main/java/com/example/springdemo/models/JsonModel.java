@@ -1,9 +1,12 @@
 package com.example.springdemo.models;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URL;
 
+@Component
 public class JsonModel {
 
 	private MultipartFile   multipartFile;

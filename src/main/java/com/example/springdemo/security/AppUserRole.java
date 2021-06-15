@@ -10,8 +10,8 @@ import static com.example.springdemo.security.AppUserPermission.*;
 
 public enum AppUserRole {
 	STUDENT(Sets.newHashSet()),
-	ADMIN(Sets.newHashSet(COURSE_READ, COURSE_WRITE, STUDENT_READ, STUDENT_WRITE)),
-	ADMINTRAINEE(Sets.newHashSet(COURSE_READ, STUDENT_READ));
+	ROLE(Sets.newHashSet(COURSE_READ, STUDENT_READ)),
+	ADMIN(Sets.newHashSet(COURSE_READ, COURSE_WRITE, STUDENT_READ, STUDENT_WRITE));
 
 	private final Set<AppUserPermission> permissions;
 
