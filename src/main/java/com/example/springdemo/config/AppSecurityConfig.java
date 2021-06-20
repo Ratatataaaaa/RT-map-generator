@@ -39,13 +39,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest()
 				.authenticated()
 				.and()
-				.httpBasic();
-
-//				.formLogin()
-//				.loginPage("/login").permitAll()
-//				.defaultSuccessUrl("/rt", true)
-//				.and()
-//				.rememberMe();
+				.formLogin()
+				.loginPage("/login").permitAll()
+				.defaultSuccessUrl("/rt", true)
+				.and()
+				.rememberMe();
 	}
 
 	@Override

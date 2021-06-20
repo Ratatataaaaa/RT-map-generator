@@ -18,6 +18,11 @@ public class MainController {
 		return "courses";
 	}
 
+	@GetMapping("student")
+	public String getStudent() {
+		return "student";
+	}
+
 	@GetMapping("rt")
 	public String getMain() {
 		return "rt";

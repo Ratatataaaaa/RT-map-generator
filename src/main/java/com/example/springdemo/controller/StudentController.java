@@ -18,22 +18,21 @@ public class StudentController {
 	@Autowired
 	DBDao dbDao;
 
-	@GetMapping
-	@ResponseStatus(HttpStatus.OK)
+	@GetMapping(value = "/all")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ADMINTRAINEE')")
 	public Map<Integer,Student> getAllStudents() {
 		return dbDao.getAllStudents();
 	}
 
-	@GetMapping(path = "/{studentId}")
-	public Student getStudent(@PathVariable("studentId") Integer studentId) {
+	@GetMapping
+	public Student getStudent(@RequestParam("studentId") Integer studentId) {
 		return dbDao.getStudentById(studentId);
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@PreAuthorize("hasAuthority('student:write')")
-	public void registerNewStudent(@RequestBody Student student) {
+	public void registerNewStudent(@ModelAttribute Student student) {
 		dbDao.add(student);
 	}
 
