@@ -1,7 +1,7 @@
 package com.example.springdemo.config;
 
-import com.example.springdemo.models.Camera;
-import com.example.springdemo.models.JsonModel;
+import com.example.springdemo.service.RTService;
+import com.example.springdemo.service.impl.RTServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.ApplicationContext;
@@ -21,12 +21,12 @@ import javax.servlet.MultipartConfigElement;
 @Configuration
 @ComponentScan("com.example.springdemo")
 @EnableWebMvc
-public class SpringConfig implements WebMvcConfigurer {
+public class AppConfig implements WebMvcConfigurer {
 
 	private final ApplicationContext applicationContext;
 
 	@Autowired
-	public SpringConfig(ApplicationContext applicationContext) {
+	public AppConfig(ApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;
 	}
 
@@ -47,13 +47,6 @@ public class SpringConfig implements WebMvcConfigurer {
 		return templateEngine;
 	}
 
-	@Override
-	public void configureViewResolvers(ViewResolverRegistry registry) {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		registry.viewResolver(resolver);
-	}
-
 	@Bean
 	public MultipartConfigElement multipartConfigElement() {
 		MultipartConfigFactory multipartConfigFactory = new MultipartConfigFactory();
@@ -62,4 +55,15 @@ public class SpringConfig implements WebMvcConfigurer {
 		return multipartConfigFactory.createMultipartConfig();
 	}
 
+	@Bean
+	RTService rtService() {
+		return new RTServiceImpl();
+	}
+
+	@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+		resolver.setTemplateEngine(templateEngine());
+		registry.viewResolver(resolver);
+	}
 }

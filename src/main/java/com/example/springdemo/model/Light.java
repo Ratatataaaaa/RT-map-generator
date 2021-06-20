@@ -1,11 +1,11 @@
-package com.example.springdemo.models;
+package com.example.springdemo.model;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class Light {
-	String  type;
-	Float   intensity;
+	String type;
+	Float intensity;
 
 	public Light() {
 		this.type = "ambient";
@@ -20,9 +20,8 @@ public class Light {
 	@Override
 	public String toString() {
 		return "light {\n" +
-				"\ttype: " + type +
-				"; intensity: " + intensity +
-				";\n" +
+				"\ttype: " + type + ";\n" +
+				"\tintensity: " + intensity + ";\n" +
 				"}\n";
 	}
 

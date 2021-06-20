@@ -1,4 +1,4 @@
-package com.example.springdemo.models;
+package com.example.springdemo.model.simpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,8 @@ public class Torus {
 	private Float transparency;
 
 	public Torus() {
-		this.setOrigin(0,0,0);
-		this.setAxis(0,0,0);
+		this.setOrigin(0, 0, 0);
+		this.setAxis(0, 0, 0);
 		this.setColor(0x001234);
 		this.radius_out = 1f;
 		this.radius_in = 1f;
@@ -26,7 +26,7 @@ public class Torus {
 	@Override
 	public String toString() {
 		return "torus {\n" +
-				"\torigin: " + origin +";\n" +
+				"\torigin: " + origin + ";\n" +
 				"\tradius-out: " + radius_out + ";\n" +
 				"\tradius-in: " + radius_out + ";\n" +
 				"\taxis: " + axis + ";\n" +

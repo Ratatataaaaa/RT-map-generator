@@ -1,4 +1,4 @@
-package com.example.springdemo.controllers;
+package com.example.springdemo.controller;
 
 import com.example.springdemo.student.Student;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,8 @@ import java.util.List;
 @RestController
 @RequestMapping("manager/api/v1/students")
 public class StudentManagerController {
-	private static List<Student> STUDENTS = new ArrayList<>();
+	private static final List<Student> STUDENTS = new ArrayList<>();
+
 	{
 		STUDENTS.add(new Student(1, "James Bond"));
 		STUDENTS.add(new Student(2, "Maria Jones"));

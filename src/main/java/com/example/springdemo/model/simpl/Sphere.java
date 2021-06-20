@@ -1,4 +1,4 @@
-package com.example.springdemo.models;
+package com.example.springdemo.model.simpl;
 
 import org.springframework.stereotype.Component;
 
@@ -7,14 +7,14 @@ import java.util.List;
 
 @Component
 public class Sphere {
-		private List<Integer>   origin;
-		private Float           radius;
-		private List<Integer>   color;
-		private Float           shininess;
-		private Float           reflection;
+	private List<Integer> origin;
+	private Float radius;
+	private List<Integer> color;
+	private Float shininess;
+	private Float reflection;
 
 	public Sphere() {
-		this.setOrigin(0,0,0);
+		this.setOrigin(0, 0, 0);
 		this.radius = 3f;
 		this.setColor(0x001234);
 		this.reflection = 0.8f;

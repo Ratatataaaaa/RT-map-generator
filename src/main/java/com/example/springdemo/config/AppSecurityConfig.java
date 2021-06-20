@@ -1,4 +1,4 @@
-package com.example.springdemo.security;
+package com.example.springdemo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -40,7 +40,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.formLogin()
 				.loginPage("/login").permitAll()
-				.defaultSuccessUrl("/main", true)
+				.defaultSuccessUrl("/rt", true)
 				.and()
 				.rememberMe();
 	}
@@ -48,31 +48,31 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	@Bean
 	protected UserDetailsService userDetailsService() {
-		UserDetails annaSmithUser = User.builder()
-				.username("annasmith")
+		UserDetails studentAnnaSmith = User.builder()
+				.username("AnnaSmith")
 				.password(passwordEncoder.encode("password"))
-                .roles(STUDENT.name()) // ROLE_STUDENT
+				.roles(STUDENT.name())
 				.authorities(STUDENT.getGrantedAuthorities())
 				.build();
 
-		UserDetails lindaUser = User.builder()
-				.username("linda")
-				.password(passwordEncoder.encode("password123"))
-                .roles(ADMIN.name()) // ROLE_ADMIN
-				.authorities(ADMIN.getGrantedAuthorities())
-				.build();
-
-		UserDetails tomUser = User.builder()
-				.username("tom")
-				.password(passwordEncoder.encode("password123"))
-                .roles(ROLE.name()) // ROLE_ADMINTRAINEE
+		UserDetails someLindaLio = User.builder()
+				.username("LindaLio")
+				.password(passwordEncoder.encode("321"))
+				.roles(ROLE.name())
 				.authorities(ROLE.getGrantedAuthorities())
 				.build();
 
+		UserDetails adminTomOriginal = User.builder()
+				.username("TomOriginal")
+				.password(passwordEncoder.encode("123"))
+				.roles(ADMIN.name())
+				.authorities(ADMIN.getGrantedAuthorities())
+				.build();
+
 		return new InMemoryUserDetailsManager(
-				annaSmithUser,
-				lindaUser,
-				tomUser
+				studentAnnaSmith,
+				someLindaLio,
+				adminTomOriginal
 		);
 
 	}

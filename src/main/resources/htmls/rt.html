@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>RT mapping</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #3e3e3e;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <form class="form-rt" method="post" action="/rtMap">
+        <h2 class="form-signin-heading">RT map generator</h2>
+
+        <p>
+            <label for="height" class="sr-only">height</label>
+            <input type="text" id="height" name="height" placeholder="Height" autofocus="">
+            <label for="width" class="sr-only">weigh</label>
+            <input type="text" id="width" name="width" placeholder="Width" autofocus="">
+        </p>
+        <p>
+            <label for="plane.origin" class="sr-only">plane.origin</label>
+            <input type="text" id="plane.origin" name="plane.origin"  placeholder="Plane origin 0, 0, 0"
+                   autofocus="">
+            <label for="plane.reflective" class="sr-only">plane.reflective</label>
+            <input type="text" id="plane.reflective" name="plane.reflective" placeholder="Plane reflective"
+                   autofocus="">
+        </p>
+        <p>
+            <label for="camera.origin" class="sr-only">plane.origin</label>
+            <input type="text" id="camera.origin" name="camera.origin"  placeholder="Camera origin 0, 0, 0"
+                   autofocus="0, 0, 0">
+            <label for="camera.direction" class="sr-only">plane.reflective</label>
+            <input type="text" id="camera.direction" name="camera.direction" placeholder="Camera direction 0, 0, 0"
+                   autofocus="">
+        </p>
+        <p>
+            <label for="url" class="sr-only">URL</label>
+            <input type="text" id="url" name="url" class="form-control" placeholder="URL" required=""
+                   autofocus="">
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Go!</button>
+    </form>
+</div>
+</body>
+</html>
