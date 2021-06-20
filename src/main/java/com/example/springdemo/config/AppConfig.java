@@ -1,5 +1,7 @@
 package com.example.springdemo.config;
 
+import com.example.springdemo.dao.DBDao;
+import com.example.springdemo.dao.mockDB.MockDB;
 import com.example.springdemo.service.RTService;
 import com.example.springdemo.service.impl.RTServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +60,11 @@ public class AppConfig implements WebMvcConfigurer {
 	@Bean
 	RTService rtService() {
 		return new RTServiceImpl();
+	}
+
+	@Bean
+	DBDao dbDao() {
+		return new MockDB();
 	}
 
 	@Override

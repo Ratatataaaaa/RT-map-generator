@@ -1,4 +1,4 @@
-package com.example.springdemo.student;
+package com.example.springdemo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -23,9 +23,9 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student{" +
-				"studentId=" + studentId +
-				", studentName='" + studentName + '\'' +
+		return "Student {\n" +
+				"studentId: " + studentId + ",\n" +
+				"studentName: " + studentName + "\n" +
 				'}';
 	}
 }

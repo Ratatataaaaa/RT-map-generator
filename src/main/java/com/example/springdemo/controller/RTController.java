@@ -21,7 +21,7 @@ public class RTController {
 	private RTService rtService;
 
 	@PostMapping
-	public void getModel(@ModelAttribute MapModel mapModel,
+	public String getModel(@ModelAttribute MapModel mapModel,
 	                     BindingResult bindingResult,
 	                     HttpServletResponse response) throws IOException {
 
@@ -43,5 +43,6 @@ public class RTController {
 		rtMap.append(rtService.getPixels(newImage));
 		rtService.writeMap(response, rtMap);
 		System.out.println("Ставим подпись. Готово!");
+		return "rt";
 	}
 }

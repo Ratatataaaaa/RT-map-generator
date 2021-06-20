@@ -35,14 +35,17 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/", "index", "/css/*", "/js/*").permitAll()
 				.antMatchers("/rt").hasRole(ADMIN.name())
+				.antMatchers("/api").permitAll()
 				.anyRequest()
 				.authenticated()
 				.and()
-				.formLogin()
-				.loginPage("/login").permitAll()
-				.defaultSuccessUrl("/rt", true)
-				.and()
-				.rememberMe();
+				.httpBasic();
+
+//				.formLogin()
+//				.loginPage("/login").permitAll()
+//				.defaultSuccessUrl("/rt", true)
+//				.and()
+//				.rememberMe();
 	}
 
 	@Override
