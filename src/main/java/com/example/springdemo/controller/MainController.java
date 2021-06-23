@@ -13,14 +13,14 @@ public class MainController {
 		return "login";
 	}
 
-	@GetMapping("courses")
+	@GetMapping("main")
 	public String getCourses() {
-		return "courses";
+		return "main";
 	}
 
-	@GetMapping("student")
+	@GetMapping("students")
 	public String getStudent() {
-		return "student";
+		return "students";
 	}
 
 	@GetMapping("rt")

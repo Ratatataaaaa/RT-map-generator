@@ -1,6 +1,6 @@
 package com.example.springdemo.dao;
 
-import com.example.springdemo.model.Student;
+import com.example.springdemo.model.rt.Student;
 
 import java.util.Map;
 

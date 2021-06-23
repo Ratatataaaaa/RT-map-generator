@@ -1,16 +1,11 @@
-package com.example.springdemo.model;
+package com.example.springdemo.model.rt;
 
-import com.example.springdemo.model.simpl.Plane;
-import com.example.springdemo.model.simpl.Sphere;
-import com.example.springdemo.model.simpl.Torus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URL;
 
 @Component
 public class MapModel {
-
 	private static URL url;
 	private static Camera camera;
 	private static Light light;
@@ -20,8 +15,13 @@ public class MapModel {
 	private static Integer width;
 
 	public StringBuilder cameraEngine() {
-
 		StringBuilder engineResponse = new StringBuilder();
+
+		if (plane == null || plane.getOrigin().size() != 3) {
+			plane = new Plane();
+			plane.setOrigin(0, 0, -15);
+		}
+		engineResponse.append(plane.toString());
 
 		if (camera == null) {
 			camera = new Camera();
@@ -38,12 +38,6 @@ public class MapModel {
 			light = new Light();
 		}
 		engineResponse.append(light.toString());
-
-		if (plane == null || plane.getOrigin().size() != 3) {
-			plane = new Plane();
-			plane.setOrigin(0, 0, -15);
-		}
-		engineResponse.append(plane.toString());
 
 		if (pointLight == null) {
 			pointLight = new PointLight();

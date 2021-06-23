@@ -33,15 +33,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 				.csrf().disable()
 				.authorizeRequests()
-				.antMatchers("/", "index", "/css/*", "/js/*").permitAll()
 				.antMatchers("/rt").hasRole(ADMIN.name())
-				.antMatchers("/api").permitAll()
-				.anyRequest()
-				.authenticated()
+				.antMatchers("/api").hasAnyRole()
+				.anyRequest().authenticated()
 				.and()
 				.formLogin()
 				.loginPage("/login").permitAll()
-				.defaultSuccessUrl("/rt", true)
+				.defaultSuccessUrl("/main", true)
 				.and()
 				.rememberMe();
 	}

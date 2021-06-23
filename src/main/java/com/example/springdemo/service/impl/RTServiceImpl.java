@@ -1,6 +1,6 @@
 package com.example.springdemo.service.impl;
 
-import com.example.springdemo.model.simpl.Sphere;
+import com.example.springdemo.model.rt.Sphere;
 import com.example.springdemo.service.RTService;
 import org.imgscalr.Scalr;
 import org.springframework.security.core.context.SecurityContextHolder;

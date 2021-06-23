@@ -1,4 +1,4 @@
-package com.example.springdemo.model.simpl;
+package com.example.springdemo.model.rt;
 
 import java.util.ArrayList;
 import java.util.List;

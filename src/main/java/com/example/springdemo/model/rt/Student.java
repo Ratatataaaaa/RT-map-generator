@@ -1,4 +1,4 @@
-package com.example.springdemo.model;
+package com.example.springdemo.model.rt;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

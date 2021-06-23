@@ -1,38 +1,35 @@
-package com.example.springdemo.model.simpl;
-
-import org.springframework.stereotype.Component;
+package com.example.springdemo.model.rt;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class Sphere {
+public class Plane {
 	private List<Integer> origin;
-	private Float radius;
+	private List<Integer> normal;
 	private List<Integer> color;
 	private Float shininess;
-	private Float reflection;
+	private Float reflective;
 
-	public Sphere() {
-		this.setOrigin(0, 0, 0);
-		this.radius = 3f;
-		this.setColor(0x001234);
-		this.reflection = 0.8f;
-		this.shininess = 1f;
+	public Plane() {
+		this.setOrigin(0, 0, -15);
+		this.setNormal(0, 0, 1);
+		this.setColor(0x000000);
+		this.shininess = 100f;
+		this.reflective = 0f;
 	}
 
 	@Override
 	public String toString() {
-		return "sphere {\n" +
+		return "plane {\n" +
 				"\torigin: " + origin + ";\n" +
-				"\tradius: " + radius + ";\n" +
+				"\tnormal: " + normal + ";\n" +
 				"\tcolor: " + color + ";\n" +
 				"\tshininess: " + shininess + ";\n" +
+				"\treflective: " + reflective + ";\n" +
 				"}\n";
 	}
 
 	public void setColor(int color) {
-
 		this.color = new ArrayList<>();
 		this.color.add(color >> 16 & 0xff);
 		this.color.add(color >> 8 & 0xff);
@@ -40,23 +37,26 @@ public class Sphere {
 	}
 
 	public void setOrigin(Integer x, Integer y, Integer z) {
-
 		this.origin = new ArrayList<>();
 		this.origin.add(x);
 		this.origin.add(y);
 		this.origin.add(z);
 	}
 
-	public void setRadius(Float radius) {
-		this.radius = radius;
+	public void setNormal(Integer x, Integer y, Integer z) {
+
+		this.normal = new ArrayList<>();
+		this.normal.add(x);
+		this.normal.add(y);
+		this.normal.add(z);
 	}
 
-	public Float getReflection() {
-		return reflection;
+	public Float getReflective() {
+		return reflective;
 	}
 
-	public void setReflection(Float reflection) {
-		this.reflection = reflection;
+	public void setReflective(Float reflective) {
+		this.reflective = reflective;
 	}
 
 	public List<Integer> getOrigin() {
@@ -65,6 +65,14 @@ public class Sphere {
 
 	public void setOrigin(List<Integer> origin) {
 		this.origin = origin;
+	}
+
+	public List<Integer> getNormal() {
+		return normal;
+	}
+
+	public void setNormal(List<Integer> normal) {
+		this.normal = normal;
 	}
 
 	public List<Integer> getColor() {
